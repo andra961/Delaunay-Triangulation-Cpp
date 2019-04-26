@@ -40,6 +40,9 @@ DISTFILES += \
     LICENSE
 
 SOURCES += \
+    algorithms/triangle_utilities.cpp \
+    data_structures/delaunay_dag.cpp \
+    data_structures/triangle2d.cpp \
     main.cpp \
     managers/delaunaymanager.cpp \
     utils/delaunay_checker.cpp \
@@ -49,6 +52,9 @@ FORMS += \
     managers/delaunaymanager.ui
 
 HEADERS += \
+    algorithms/triangle_utilities.h \
+    data_structures/delaunay_dag.h \
+    data_structures/triangle2d.h \
     managers/delaunaymanager.h \
     utils/delaunay_checker.h \
     utils/fileutils.h
