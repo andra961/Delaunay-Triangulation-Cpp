@@ -11,15 +11,15 @@ bool comparePointsClockWise(const cg3::Point2Dd point1, const cg3::Point2Dd poin
 }
 
 //template <typename Container>
-void sortClockWiseOrder(std::array<cg3::Point2Dd,3>& points){
+void sortTriangleClockWise(std::array<cg3::Point2Dd,3>& points){
     std::sort(points.begin(),points.end(),comparePointsClockWise);
 }
 
 //template <typename Container>
-void sortAntiClockWiseOrder(std::array<cg3::Point2Dd,3>& points){
+void sortTriangleAntiClockWise(std::array<cg3::Point2Dd,3>& points){
     //typename Container::const_iterator first = points.begin();
     //typename Container::const_iterator last = points.end();
-    sortClockWiseOrder(points);
+    sortTriangleClockWise(points);
     std::reverse(points.begin(),points.end());
 }
 
