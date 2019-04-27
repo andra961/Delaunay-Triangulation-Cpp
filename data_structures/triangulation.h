@@ -18,6 +18,7 @@ public:
 
     Triangle2d getTriangle(const int index) const;
     void eraseTriangle(const int index);
+    void addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,int adjacency1,int adjacency2,int adjacency3);
 
 protected:
     std::vector<Triangle2d> triangles;
