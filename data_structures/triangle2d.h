@@ -13,10 +13,10 @@ class Triangle2d
 {
 public:
     Triangle2d();
-    Triangle2d(std::array<cg3::Point2Dd,3>& points,bool clockWiseOrAntiClockWise);
+    Triangle2d(std::array<cg3::Point2Dd,3>& points);
 
     const std::array<cg3::Point2Dd,3>& getPoints() const;
-    void setPoints(std::array<cg3::Point2Dd,3>& points,bool clockWiseOrAntiClockWise);
+    void setPoints(std::array<cg3::Point2Dd,3>& points);
 
 protected:
     std::array<cg3::Point2Dd,3> vertices;

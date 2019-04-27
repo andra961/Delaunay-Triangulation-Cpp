@@ -43,6 +43,8 @@ SOURCES += \
     algorithms/triangle_utilities.cpp \
     data_structures/delaunay_dag.cpp \
     data_structures/triangle2d.cpp \
+    data_structures/triangulation.cpp \
+    data_structures/triangulation_member.cpp \
     main.cpp \
     managers/delaunaymanager.cpp \
     utils/delaunay_checker.cpp \
@@ -55,6 +57,8 @@ HEADERS += \
     algorithms/triangle_utilities.h \
     data_structures/delaunay_dag.h \
     data_structures/triangle2d.h \
+    data_structures/triangulation.h \
+    data_structures/triangulation_member.h \
     managers/delaunaymanager.h \
     utils/delaunay_checker.h \
     utils/fileutils.h

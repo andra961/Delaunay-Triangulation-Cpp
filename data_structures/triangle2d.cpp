@@ -15,14 +15,9 @@ Triangle2d::Triangle2d()
  * @param clockWiseOrAntiClockWise if true the triangle must be in clockwise order else in anticlockwise order
  */
 
-Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points,bool clockWiseOrAntiClockWise){
+Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points){
 
-    if (clockWiseOrAntiClockWise){
-        sortTriangleClockWise(points);
-    }
-    else {
         sortTriangleAntiClockWise(points);
-    }
 
     this->vertices=points;
 }
@@ -41,15 +36,9 @@ const std::array<cg3::Point2Dd,3>& Triangle2d::getPoints() const{
  * @param clockWiseOrAntiClockWise if true the triangle must be in clockwise order else in anticlockwise order
  */
 
-void Triangle2d::setPoints(std::array<cg3::Point2Dd,3>& points,bool clockWiseOrAntiClockWise){
+void Triangle2d::setPoints(std::array<cg3::Point2Dd,3>& points){
 
-    if (clockWiseOrAntiClockWise){
-        sortTriangleClockWise(points);
-    }
-    else {
         sortTriangleAntiClockWise(points);
-    }
-
 
     this->vertices = points;
 }

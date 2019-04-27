@@ -1,25 +1,44 @@
 #include "triangle_utilities.h"
 
+/**
+ * @brief return the angle of a point formed with the positive x axis through atan2
+ * @param point the point
+ * @return the angle computed through atan2
+ */
 
 double getClockWiseAngle(const cg3::Point2Dd point) {
-    double angle = atan2(point.x(), point.y());
+    double angle = std::atan2(point.x(), point.y());
     return angle;
 }
+
+/**
+ * @brief used to compare the angles of two points
+ * @param point1 the first point
+ * @param point2 the second point
+ * @return true if the first angle is smaller else false
+ */
 
 bool comparePointsClockWise(const cg3::Point2Dd point1, const cg3::Point2Dd point2) {
     return getClockWiseAngle(point1) < getClockWiseAngle(point2);
 }
 
-//template <typename Container>
-void sortClockWiseOrder(std::array<cg3::Point2Dd,3>& points){
+/**
+ * @brief sort the points in clockwise order
+ * @param points an array of the 3 points to be sorted
+ */
+
+void sortTriangleClockWise(std::array<cg3::Point2Dd,3>& points){
     std::sort(points.begin(),points.end(),comparePointsClockWise);
 }
 
-//template <typename Container>
-void sortAntiClockWiseOrder(std::array<cg3::Point2Dd,3>& points){
-    //typename Container::const_iterator first = points.begin();
-    //typename Container::const_iterator last = points.end();
-    sortClockWiseOrder(points);
+/**
+ * @brief sort the points in anticlockwise order
+ * @param points an array of the 3 points to be sorted
+ */
+
+void sortTriangleAntiClockWise(std::array<cg3::Point2Dd,3>& points){
+
+    sortTriangleClockWise(points);
     std::reverse(points.begin(),points.end());
 }
 
