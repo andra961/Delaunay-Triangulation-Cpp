@@ -2,8 +2,8 @@
 #define TRIANGULATION_H
 
 #include <vector>
-#include <data_structures/triangle2d.h>
-#include <cg3/core/cg3/geometry/2d/point2d.tpp>
+#include <data_structures/triangulation_member.h>
+#include <cg3/core/cg3/geometry/2d/point2d.h>
 
 /**
  * @brief class that represents a triangulation;
@@ -14,15 +14,17 @@ class Triangulation
 public:
     Triangulation();
     Triangulation(std::array<cg3::Point2Dd,3>& init_triangle_points);
-    Triangulation(const Triangle2d& init_triangle);
+    Triangulation(const Triangulation_member& init_triangle);
 
-    Triangle2d getTriangle(const int index) const;
-    void eraseTriangle(const int index);
-    void addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,int adjacency1,int adjacency2,int adjacency3);
+    Triangulation_member getTriangle(const size_t index) const;
+    void addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
+    std::vector<size_t> getNeighbours(const size_t index) const;
+    void setTriangleActive(const size_t index);
+    void setTriangleInactive(const size_t index);
 
 protected:
-    std::vector<Triangle2d> triangles;
-    std::vector<std::vector<int>> adjacency_lists;
+    std::vector<Triangulation_member> triangles;
+    std::vector<std::vector<size_t>> adjacency_lists;
 };
 
 
