@@ -41,6 +41,8 @@ const cg3::Pointd SCENECENTER(0,0,0);
 //                         You have to write your code in the area below.
 #include <data_structures/triangle2d.h>
 #include <cg3/geometry/2d/point2d.h>
+#include <data_structures/triangulation.h>
+#include <data_structures/dag_node.h>
 //----------------------------------------------------------------------------------------------
 
 
@@ -145,6 +147,22 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
+    cg3::Point2Dd point1 = cg3::Point2Dd(0,1);
+    cg3::Point2Dd point2 = cg3::Point2Dd(5,1);
+    cg3::Point2Dd point3 = cg3::Point2Dd(2,3);
+    cg3::Point2Dd point4 = cg3::Point2Dd(2,2);
+    std::array<cg3::Point2Dd,3> triangle;
+    triangle[0]= point1;
+    triangle[1]= point2;
+    triangle[2]= point3;
+    Triangle2d triangle2d = Triangle2d(triangle);
+    Triangulation triang = Triangulation();
+    triang.addTriangle(triangle,0,0,0);
+    Triangle2d tri = triang.getTriangle(1);
+    //std::cout << tri.getPoints()[0].x() << tri.getPoints()[1].x() << tri.getPoints()[2].x();
+    //std::cout << tri.getPoints()[0].y() << tri.getPoints()[1].y() << tri.getPoints()[2].y();
+    Dag_node dag = Dag_node(1);
+    std::cout << dag.searchTriangle(triang,point4)->getIndex();
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }

@@ -13,7 +13,7 @@ Triangulation::Triangulation()
     bounding_space[1] = point;
     bounding_space[2] = point;
 
-    this->triangles.push_back(Triangulation_member(bounding_space));
+    this->triangles.push_back(Triangulation_member(bounding_space,false));
 
     std::vector<size_t> adj_list;
 

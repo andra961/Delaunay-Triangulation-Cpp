@@ -1,4 +1,4 @@
-#include "delaunay_dag.h"
+#include "dag_node.h"
 
 Delaunay_dag::Delaunay_dag()
 {

@@ -41,7 +41,7 @@ DISTFILES += \
 
 SOURCES += \
     algorithms/triangle_utilities.cpp \
-    data_structures/delaunay_dag.cpp \
+    data_structures/dag_node.cpp \
     data_structures/triangle2d.cpp \
     data_structures/triangulation.cpp \
     data_structures/triangulation_member.cpp \
@@ -55,7 +55,7 @@ FORMS += \
 
 HEADERS += \
     algorithms/triangle_utilities.h \
-    data_structures/delaunay_dag.h \
+    data_structures/dag_node.h \
     data_structures/triangle2d.h \
     data_structures/triangulation.h \
     data_structures/triangulation_member.h \
