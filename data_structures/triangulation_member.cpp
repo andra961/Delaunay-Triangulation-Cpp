@@ -10,6 +10,16 @@ Triangulation_member::Triangulation_member(std::array<cg3::Point2Dd,3>& points,b
     this->active = isActive;
 }
 
+Triangulation_member::Triangulation_member(Triangle2d& points) : Triangle2d (points)
+{
+
+}
+
+Triangulation_member::Triangulation_member(Triangle2d& points,bool isActive) : Triangle2d (points)
+{
+    this->active = isActive;
+}
+
 void Triangulation_member::setActive(){
     this->active = true;
 }

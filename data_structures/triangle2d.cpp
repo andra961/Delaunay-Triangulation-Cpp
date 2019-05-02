@@ -22,6 +22,17 @@ Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points){
     this->vertices=points;
 }
 
+Triangle2d::Triangle2d(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd& point3){
+
+        std::array<cg3::Point2Dd,3> points;
+        points[0] = point1;
+        points[1] = point2;
+        points[2] = point3;
+        sortTriangleAntiClockWise(points);
+
+    this->vertices=points;
+}
+
 /**
  * @return the points of the triangle
  */
@@ -38,6 +49,17 @@ const std::array<cg3::Point2Dd,3>& Triangle2d::getPoints() const{
 
 void Triangle2d::setPoints(std::array<cg3::Point2Dd,3>& points){
 
+        sortTriangleAntiClockWise(points);
+
+    this->vertices = points;
+}
+
+void Triangle2d::setPoints(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd& point3){
+
+    std::array<cg3::Point2Dd,3> points;
+    points[0] = point1;
+    points[1] = point2;
+    points[2] = point3;
         sortTriangleAntiClockWise(points);
 
     this->vertices = points;

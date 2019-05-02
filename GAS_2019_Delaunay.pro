@@ -40,6 +40,7 @@ DISTFILES += \
     LICENSE
 
 SOURCES += \
+    algorithms/delaunay_triangulation.cpp \
     algorithms/triangle_utilities.cpp \
     data_structures/dag_node.cpp \
     data_structures/triangle2d.cpp \
@@ -54,6 +55,7 @@ FORMS += \
     managers/delaunaymanager.ui
 
 HEADERS += \
+    algorithms/delaunay_triangulation.h \
     algorithms/triangle_utilities.h \
     data_structures/dag_node.h \
     data_structures/triangle2d.h \

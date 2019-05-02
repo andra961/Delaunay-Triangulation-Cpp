@@ -41,7 +41,7 @@ Triangulation_member Triangulation::getTriangle(const size_t index) const{
  * @param adjacency3 neighbour,put 0 if it has not neighbours
  */
 
-void Triangulation::addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3){
+size_t Triangulation::addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3){
     this->triangles.push_back(Triangulation_member(triangle_points));
     std::vector<size_t> adj_list;
 
@@ -50,6 +50,21 @@ void Triangulation::addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,siz
     adj_list.push_back(adjacency3);
 
     this->adjacency_lists.push_back(adj_list);
+
+    return this->triangles.size() -1;
+}
+
+size_t Triangulation::addTriangle(Triangle2d& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3){
+    this->triangles.push_back(Triangulation_member(triangle_points));
+    std::vector<size_t> adj_list;
+
+    adj_list.push_back(adjacency1);
+    adj_list.push_back(adjacency2);
+    adj_list.push_back(adjacency3);
+
+    this->adjacency_lists.push_back(adj_list);
+
+    return this->triangles.size() -1;
 }
 
 std::vector<size_t> Triangulation::getNeighbours(const size_t index) const{

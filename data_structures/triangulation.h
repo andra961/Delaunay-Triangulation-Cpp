@@ -17,7 +17,8 @@ public:
     Triangulation(const Triangulation_member& init_triangle);
 
     Triangulation_member getTriangle(const size_t index) const;
-    void addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
+    size_t addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
+    size_t addTriangle(Triangle2d& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
     std::vector<size_t> getNeighbours(const size_t index) const;
     void setTriangleActive(const size_t index);
     void setTriangleInactive(const size_t index);
