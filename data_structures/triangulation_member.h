@@ -7,16 +7,17 @@
 class Triangulation_member: public Triangle2d
 {
 public:
-    Triangulation_member(std::array<cg3::Point2Dd,3>& points);
-    Triangulation_member(std::array<cg3::Point2Dd,3>& points,bool isActive);
-    Triangulation_member(Triangle2d& points);
-    Triangulation_member(Triangle2d& points,bool isActive);
+    Triangulation_member(const Triangle2d& points,const std::array<size_t,3>& adjList);
+    Triangulation_member(const Triangle2d& points,const std::array<size_t,3>& adjList,const bool isActive);
     void setActive();
     void setInactive();
     bool isActive() const;
+    size_t getNeighbour(const size_t index) const;
+    void setNeighbour(size_t neighbour,const size_t new_index);
 
 protected:
     bool active;
+    std::array<size_t,3> adjList;
 };
 
 #endif // TRIANGULATION_MEMBER_H

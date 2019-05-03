@@ -22,7 +22,7 @@ Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points){
     this->vertices=points;
 }
 
-Triangle2d::Triangle2d(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd& point3){
+Triangle2d::Triangle2d(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,const cg3::Point2Dd& point3){
 
         std::array<cg3::Point2Dd,3> points;
         points[0] = point1;
@@ -39,6 +39,10 @@ Triangle2d::Triangle2d(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd
 
 const std::array<cg3::Point2Dd,3>& Triangle2d::getPoints() const{
     return this->vertices;
+}
+
+const cg3::Point2Dd& Triangle2d::getPoint(const size_t index) const{
+    return this->vertices[index];
 }
 
 /**

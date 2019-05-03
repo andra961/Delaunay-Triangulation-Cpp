@@ -12,20 +12,15 @@
 class Triangulation
 {
 public:
-    Triangulation();
-    Triangulation(std::array<cg3::Point2Dd,3>& init_triangle_points);
-    Triangulation(const Triangulation_member& init_triangle);
-
+    Triangulation(const Triangle2d& init_triangle);
     Triangulation_member getTriangle(const size_t index) const;
-    size_t addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
-    size_t addTriangle(Triangle2d& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3);
-    std::vector<size_t> getNeighbours(const size_t index) const;
+    size_t size();
+    void addTriangle(const Triangulation_member triangle);
     void setTriangleActive(const size_t index);
     void setTriangleInactive(const size_t index);
 
 protected:
     std::vector<Triangulation_member> triangles;
-    std::vector<std::vector<size_t>> adjacency_lists;
 };
 
 

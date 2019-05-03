@@ -4,24 +4,14 @@
  * @brief default constructor initialises the triangulation with a triangle representing the bounding space,so triangles with no adjacents triangles will point to that(0)
  */
 
-Triangulation::Triangulation()
+Triangulation::Triangulation(const Triangle2d& init_triangle)
 {
-    std::array<cg3::Point2Dd,3> bounding_space;
-    cg3::Point2Dd point = cg3::Point2Dd(0,0);
+    std::array<size_t,3> adjList;
+    for (size_t i = 0;i < 3;i++) {
+        adjList[i] = 0;
+    }
 
-    bounding_space[0] = point;
-    bounding_space[1] = point;
-    bounding_space[2] = point;
-
-    this->triangles.push_back(Triangulation_member(bounding_space,false));
-
-    std::vector<size_t> adj_list;
-
-    adj_list.push_back(0);
-    adj_list.push_back(0);
-    adj_list.push_back(0);
-
-    this->adjacency_lists.push_back(adj_list);
+    this->triangles.push_back(Triangulation_member(init_triangle,adjList));
 }
 
 /**
@@ -33,42 +23,12 @@ Triangulation_member Triangulation::getTriangle(const size_t index) const{
     return this->triangles[index];
 }
 
-/**
- * @brief add a triangle and its neighbours
- * @param triangle_points the triangle to add
- * @param adjacency1 neighbour,put 0 if it has not neighbours
- * @param adjacency2 neighbour,put 0 if it has not neighbours
- * @param adjacency3 neighbour,put 0 if it has not neighbours
- */
-
-size_t Triangulation::addTriangle(std::array<cg3::Point2Dd,3>& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3){
-    this->triangles.push_back(Triangulation_member(triangle_points));
-    std::vector<size_t> adj_list;
-
-    adj_list.push_back(adjacency1);
-    adj_list.push_back(adjacency2);
-    adj_list.push_back(adjacency3);
-
-    this->adjacency_lists.push_back(adj_list);
-
-    return this->triangles.size() -1;
+size_t Triangulation::size(){
+    return this->triangles.size();
 }
 
-size_t Triangulation::addTriangle(Triangle2d& triangle_points,size_t adjacency1,size_t adjacency2,size_t adjacency3){
-    this->triangles.push_back(Triangulation_member(triangle_points));
-    std::vector<size_t> adj_list;
-
-    adj_list.push_back(adjacency1);
-    adj_list.push_back(adjacency2);
-    adj_list.push_back(adjacency3);
-
-    this->adjacency_lists.push_back(adj_list);
-
-    return this->triangles.size() -1;
-}
-
-std::vector<size_t> Triangulation::getNeighbours(const size_t index) const{
-    return this->adjacency_lists[index];
+void Triangulation::addTriangle(const Triangulation_member triangle){
+    this->triangles.pus
 }
 
 void Triangulation::setTriangleActive(const size_t index){

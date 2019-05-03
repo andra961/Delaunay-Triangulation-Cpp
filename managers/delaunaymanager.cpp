@@ -150,19 +150,13 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
     cg3::Point2Dd point1 = cg3::Point2Dd(0,1);
     cg3::Point2Dd point2 = cg3::Point2Dd(5,1);
     cg3::Point2Dd point3 = cg3::Point2Dd(2,3);
-    cg3::Point2Dd point4 = cg3::Point2Dd(2,2);
     std::array<cg3::Point2Dd,3> triangle;
     triangle[0]= point1;
     triangle[1]= point2;
     triangle[2]= point3;
     Triangle2d triangle2d = Triangle2d(triangle);
-    Triangulation triang = Triangulation();
-    triang.addTriangle(triangle,0,0,0);
-    Triangle2d tri = triang.getTriangle(1);
-    //std::cout << tri.getPoints()[0].x() << tri.getPoints()[1].x() << tri.getPoints()[2].x();
-    //std::cout << tri.getPoints()[0].y() << tri.getPoints()[1].y() << tri.getPoints()[2].y();
-    Dag_node dag = Dag_node(1);
-    std::cout << dag.searchTriangle(triang,point4)->getIndex();
+
+    std::cout << triangle2d.getPoints()[0] << triangle2d.getPoints()[1] << triangle2d;
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }

@@ -1,22 +1,13 @@
 #include "triangulation_member.h"
 
-Triangulation_member::Triangulation_member(std::array<cg3::Point2Dd,3>& points) : Triangle2d (points)
+Triangulation_member::Triangulation_member(const Triangle2d& points,const std::array<size_t,3>& adjList) : Triangle2d (points)
 {
-    this->active = true;
+    this->adjList = adjList;
 }
 
-Triangulation_member::Triangulation_member(std::array<cg3::Point2Dd,3>& points,bool isActive) : Triangle2d (points)
+Triangulation_member::Triangulation_member(const Triangle2d& points,const std::array<size_t,3>& adjList,const bool isActive) : Triangle2d (points)
 {
-    this->active = isActive;
-}
-
-Triangulation_member::Triangulation_member(Triangle2d& points) : Triangle2d (points)
-{
-
-}
-
-Triangulation_member::Triangulation_member(Triangle2d& points,bool isActive) : Triangle2d (points)
-{
+    this->adjList = adjList;
     this->active = isActive;
 }
 
@@ -32,3 +23,10 @@ bool Triangulation_member::isActive() const{
     return this->active;
 }
 
+size_t Triangulation_member::getNeighbour(const size_t index) const{
+    return this->adjList[index];
+}
+
+void Triangulation_member::setNeighbour(const size_t neighbour,const size_t new_index){
+    this->adjList[neighbour] = new_index;
+}
