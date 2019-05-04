@@ -6,8 +6,8 @@
 #include <cg3/viewer/mainwindow.h>
 
 #include <cg3/viewer/drawable_objects/2d/drawable_bounding_box2d.h>
-
-
+#include <drawable_objects/drawable_delaunay_triangulation.h>
+#include <data_structures/dag_node.h>
 namespace Ui {
     class DelaunayManager;
 }
@@ -40,7 +40,8 @@ private:
 
     //Declare your private attributes here
     /********************************************************************************************************************/
-
+    Drawable_delaunay_triangulation triangulation;
+    Dag_node dag;
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/

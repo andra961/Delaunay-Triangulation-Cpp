@@ -28,10 +28,10 @@ Dag_node* Dag_node::searchTriangle(const Triangulation& triangulation,const cg3:
 {
     for(size_t i = 0; i < this->children.size(); i++)
         {
-            Triangle2d current_triangle = triangulation.getTriangle(i);
+            Triangle2d current_triangle = triangulation.getTriangle(this->children[i]->getIndex());
             if(isPointLyingInTriangle(current_triangle.getPoints()[0],current_triangle.getPoints()[1],current_triangle.getPoints()[2],point,true))
             {
-                return this->children[0]->searchTriangle(triangulation,point);
+                return this->children[i]->searchTriangle(triangulation,point);
             }
         }
 

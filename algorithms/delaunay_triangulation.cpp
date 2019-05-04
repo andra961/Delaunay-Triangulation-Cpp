@@ -1,7 +1,6 @@
 #include "delaunay_triangulation.h"
 
-#include <data_structures/dag_node.h>
-#include <cg3/core/cg3/geometry/2d/utils2d.h>
+
 
 
 std::array<Triangle2d,3> splitTriangleIn3(Triangle2d triangle, cg3::Point2Dd point){
@@ -62,6 +61,48 @@ size_t findIndexInNeighbour(Triangulation triangulation,size_t triangle_index,si
 }
 
 
+void incrementalStep(Triangulation& triangulation, Dag_node& dag,const cg3::Point2Dd& point){
+    Dag_node* current_node = dag.searchTriangle(triangulation,point);
+    triangulation.setTriangleInactive(current_node->getIndex());
+    Triangulation_member current_triangle = triangulation.getTriangle(current_node->getIndex());
+
+    std::cout << "triangolo trovato : ("<<current_triangle.getPoint(0).x()<<" , "<<current_triangle.getPoint(0).y()<<") "
+              <<"("<<current_triangle.getPoint(1).x()<<" , "<<current_triangle.getPoint(1).y()<<") "
+             <<"("<<current_triangle.getPoint(2).x()<<" , "<<current_triangle.getPoint(2).y()<<") ";
+
+    size_t current_index = triangulation.size();
+
+    bool isPointOnEdge1 = positionOfPointWithRespectToSegment(current_triangle.getPoint(0),current_triangle.getPoint(1),point) == 0.0;
+    bool isPointOnEdge2 = positionOfPointWithRespectToSegment(current_triangle.getPoint(1),current_triangle.getPoint(2),point) == 0.0;
+    bool isPointOnEdge3 = positionOfPointWithRespectToSegment(current_triangle.getPoint(2),current_triangle.getPoint(0),point) == 0.0;
+    if((!isPointOnEdge1) && (!isPointOnEdge2) && (!isPointOnEdge3))
+    {
+
+        std::array<Triangle2d,3> new_triangles = splitTriangleIn3(current_triangle,point);
+
+        std::array<size_t,3> new_triangles_indexes;
+        new_triangles_indexes[0] = current_index;
+        new_triangles_indexes[1] = current_index+1;
+        new_triangles_indexes[2] = current_index+2;
+
+        for (size_t t = 0;t<3;t++) {
+            Triangle2d triangle = new_triangles[t];
+            size_t reference_index = findPointIndex(triangle,point);
+            std::array<size_t,3> adjList;
+            adjList[reference_index] = new_triangles_indexes[(t+2)%3];
+            adjList[(reference_index+1)%3] = current_triangle.getNeighbour(t);
+            adjList[(reference_index+2)%3] = new_triangles_indexes[(t+1)%3];
+            updateIndexInNeighbour(triangulation,current_node->getIndex(),current_triangle.getNeighbour(t),new_triangles_indexes[t]);
+            triangulation.addTriangle(Triangulation_member(triangle,adjList));
+            current_node->appendChild(new_triangles_indexes[t]);
+        }
+    }
+
+    else {
+
+    }
+}
+
 
 Triangulation getTriangulation(const cg3::Point2Dd bounding_point1,const cg3::Point2Dd bounding_point2, const cg3::Point2Dd bounding_point3, const std::vector<cg3::Point2Dd> points){
 
@@ -72,7 +113,7 @@ Triangulation getTriangulation(const cg3::Point2Dd bounding_point1,const cg3::Po
     for(size_t i = 0; i < points.size(); i++)
     {
         Dag_node* current_node = dag.searchTriangle(triangulation,points[i]);
-        triangulation.setTriangleInactive(i);
+        triangulation.setTriangleInactive(current_node->getIndex());
         Triangulation_member current_triangle = triangulation.getTriangle(current_node->getIndex());
 
         size_t current_index = triangulation.size();

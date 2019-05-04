@@ -43,6 +43,8 @@ const cg3::Pointd SCENECENTER(0,0,0);
 #include <cg3/geometry/2d/point2d.h>
 #include <data_structures/triangulation.h>
 #include <data_structures/dag_node.h>
+#include <drawable_objects/drawable_delaunay_triangulation.h>
+#include <algorithms/delaunay_triangulation.h>
 //----------------------------------------------------------------------------------------------
 
 
@@ -57,7 +59,7 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     ui(new Ui::DelaunayManager),
     mainWindow(static_cast<cg3::viewer::MainWindow&>(*parent)),
     boundingBox(cg3::Point2Dd(-BOUNDINGBOX, -BOUNDINGBOX),
-                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX))    
+                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),SCENECENTER,SCENERADIUS),dag(0)
 {
     //UI setup
     ui->setupUi(this);
@@ -80,7 +82,7 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     //You probably need to initialize your objects in the constructor. Write it here if you need, or add in the constructor
     //for member initialization.
     /********************************************************************************************************************/
-
+    //this->triangulation = Drawable_delaunay_triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),SCENECENTER,SCENERADIUS);
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/
@@ -160,7 +162,7 @@ void DelaunayManager::addPointToDelaunayTriangulation(const cg3::Point2Dd& p) {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    incrementalStep(triangulation,dag,p);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(p);
 }
@@ -194,7 +196,7 @@ void DelaunayManager::drawDelaunayTriangulation() {
     //Draw your Delaunay Triangulation in the canvas here if you choose another
     //approach.
     /********************************************************************************************************************/
-
+    mainWindow.pushObj(&triangulation,"Triangulation");
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/
