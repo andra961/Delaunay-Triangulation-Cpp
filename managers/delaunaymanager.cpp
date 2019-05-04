@@ -147,16 +147,6 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
-    cg3::Point2Dd point1 = cg3::Point2Dd(0,1);
-    cg3::Point2Dd point2 = cg3::Point2Dd(5,1);
-    cg3::Point2Dd point3 = cg3::Point2Dd(2,3);
-    std::array<cg3::Point2Dd,3> triangle;
-    triangle[0]= point1;
-    triangle[1]= point2;
-    triangle[2]= point3;
-    Triangle2d triangle2d = Triangle2d(triangle);
-
-    std::cout << triangle2d.getPoints()[0] << triangle2d.getPoints()[1] << triangle2d;
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }

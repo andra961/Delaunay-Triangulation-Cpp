@@ -28,7 +28,7 @@ size_t Triangulation::size(){
 }
 
 void Triangulation::addTriangle(const Triangulation_member triangle){
-    this->triangles.pus
+    this->triangles.push_back(triangle);
 }
 
 void Triangulation::setTriangleActive(const size_t index){
