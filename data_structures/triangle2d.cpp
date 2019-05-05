@@ -1,5 +1,7 @@
 #include "triangle2d.h"
 
+#include <algorithms/triangle_utilities.h>
+
 /**
  * @brief default constructor
  */

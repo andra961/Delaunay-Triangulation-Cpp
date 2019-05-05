@@ -1,6 +1,6 @@
 #include "drawable_delaunay_triangulation.h"
 
-Drawable_delaunay_triangulation::Drawable_delaunay_triangulation(const Triangle2d& init_triangle,const cg3::Pointd center,const double radius) : Triangulation(init_triangle)
+Drawable_delaunay_triangulation::Drawable_delaunay_triangulation(const Triangle2d& init_triangle,Dag_node* dag,const cg3::Pointd center,const double radius) : Triangulation(init_triangle,dag)
 {
     this->center = center;
     this->radius = radius;

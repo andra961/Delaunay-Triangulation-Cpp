@@ -4,14 +4,14 @@
  * @brief default constructor initialises the triangulation with a triangle representing the bounding space,so triangles with no adjacents triangles will point to that(0)
  */
 
-Triangulation::Triangulation(const Triangle2d& init_triangle)
+Triangulation::Triangulation(const Triangle2d& init_triangle,Dag_node* dag_node)
 {
     std::array<size_t,3> adjList;
     for (size_t i = 0;i < 3;i++) {
         adjList[i] = 0;
     }
 
-    this->triangles.push_back(Triangulation_member(init_triangle,adjList));
+    this->triangles.push_back(Triangulation_member(init_triangle,adjList,dag_node));
 }
 
 /**

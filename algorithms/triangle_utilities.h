@@ -4,6 +4,8 @@
 #include <cg3/geometry/2d/point2d.h>
 #include <algorithm>
 #include <cmath>
+#include <data_structures/dag_node.h>
+#include <data_structures/triangulation.h>
 
 
 double getClockWiseAngle(const cg3::Point2Dd point);
@@ -13,6 +15,8 @@ bool comparePointsClockWise(const cg3::Point2Dd point1, const cg3::Point2Dd poin
 void sortTriangleClockWise(std::array<cg3::Point2Dd,3>& points);
 
 void sortTriangleAntiClockWise(std::array<cg3::Point2Dd,3>& points);
+
+Dag_node* searchTriangle(const Triangulation& triangulation,Dag_node* dag,const cg3::Point2Dd point);
 
 
 #endif // UTILITIES_H

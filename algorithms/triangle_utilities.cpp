@@ -42,4 +42,18 @@ void sortTriangleAntiClockWise(std::array<cg3::Point2Dd,3>& points){
     std::reverse(points.begin(),points.end());
 }
 
+Dag_node* searchTriangle(const Triangulation& triangulation,Dag_node* dag,const cg3::Point2Dd point)
+{
+    for(size_t i = 0; i < dag->getChildren().size(); i++)
+        {
+            Triangle2d current_triangle = triangulation.getTriangle(dag->getChildren()[i]->getIndex());
+            if(isPointLyingInTriangle(current_triangle.getPoints()[0],current_triangle.getPoints()[1],current_triangle.getPoints()[2],point,true))
+            {
+                return searchTriangle(triangulation,dag->getChildren()[i],point);
+            }
+        }
+
+    return dag;
+}
+
 

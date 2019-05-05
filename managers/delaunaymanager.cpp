@@ -59,7 +59,7 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     ui(new Ui::DelaunayManager),
     mainWindow(static_cast<cg3::viewer::MainWindow&>(*parent)),
     boundingBox(cg3::Point2Dd(-BOUNDINGBOX, -BOUNDINGBOX),
-                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),SCENECENTER,SCENERADIUS),dag(0)
+                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),dag(0),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),&this->dag,SCENECENTER,SCENERADIUS)
 {
     //UI setup
     ui->setupUi(this);
@@ -148,7 +148,7 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    getTriangulation(triangulation,dag,inputPoints);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }

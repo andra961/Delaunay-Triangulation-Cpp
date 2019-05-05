@@ -3,7 +3,6 @@
 
 #include <array>
 #include <cg3/geometry/2d/point2d.h>
-#include <algorithms/triangle_utilities.h>
 
 /**
  * @brief class that represents a triangle;contains an array of 3 points ordered in clockwise or anticlockwise order

@@ -9,7 +9,7 @@
 class Drawable_delaunay_triangulation  : public Triangulation, public cg3::DrawableObject
 {
 public:
-    Drawable_delaunay_triangulation(const Triangle2d& init_triangle,const cg3::Pointd center,const double radius);
+    Drawable_delaunay_triangulation(const Triangle2d& init_triangle,Dag_node* dag,const cg3::Pointd center,const double radius);
     void draw() const;
     cg3::Pointd sceneCenter() const;
     double sceneRadius() const;

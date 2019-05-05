@@ -12,7 +12,7 @@
 class Triangulation
 {
 public:
-    Triangulation(const Triangle2d& init_triangle);
+    Triangulation(const Triangle2d& init_triangle,Dag_node* dag_node);
     Triangulation_member getTriangle(const size_t index) const;
     size_t size();
     void addTriangle(const Triangulation_member triangle);
