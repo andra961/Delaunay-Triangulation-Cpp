@@ -23,7 +23,7 @@ Triangulation_member& Triangulation::getTriangle(const size_t index){
     return this->triangles[index];
 }
 
-std::vector<Triangulation_member> Triangulation::getTriangles(const size_t index) const{
+std::vector<Triangulation_member> Triangulation::getTriangles() const{
     return this->triangles;
 }
 

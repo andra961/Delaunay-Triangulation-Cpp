@@ -4,6 +4,7 @@ Triangulation_member::Triangulation_member(const Triangle2d& points,const std::a
 {
     this->dag_node = dag_node;
     this->adjList = adjList;
+    this->active = true;
 }
 
 Triangulation_member::Triangulation_member(const Triangle2d& points,const std::array<size_t,3>& adjList,Dag_node* dag_node,const bool isActive) : Triangle2d (points)

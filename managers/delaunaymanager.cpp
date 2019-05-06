@@ -150,12 +150,12 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
-    std::vector<cg3::Point2Dd> points1;
+    //std::vector<cg3::Point2Dd> points1;
 
-    points1.push_back(cg3::Point2Dd(0,0));
+    //points1.push_back(cg3::Point2Dd(0,0));
     //points1.push_back(cg3::Point2Dd(0,100009));
 
-    getTriangulation(triangulation,dag,points1);
+    getTriangulation(triangulation,dag,inputPoints);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }

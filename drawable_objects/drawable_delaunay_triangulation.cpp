@@ -8,10 +8,9 @@ Drawable_delaunay_triangulation::Drawable_delaunay_triangulation(const Triangle2
 
 void Drawable_delaunay_triangulation::draw() const {
     for (size_t i = 0;i<this->triangles.size();i++) {
-        Triangulation_member triangle = this->triangles[i];
-        if(triangle.isActive())
+        if(this->triangles[i].isActive())
         {
-            cg3::viewer::drawTriangle2D(triangle.getPoints(),cg3::Color(),1);
+            cg3::viewer::drawTriangle2D(this->triangles[i].getPoints(),cg3::Color(),1);
         }
     }
 }
