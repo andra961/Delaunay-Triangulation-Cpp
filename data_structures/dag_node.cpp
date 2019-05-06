@@ -27,7 +27,7 @@ size_t Dag_node::getIndex() const{
     return this->triangle;
 }
 
-std::vector<Dag_node *> Dag_node::getChildren() const{
+const std::vector<Dag_node *>& Dag_node::getChildren() const{
     return this->children;
 }
 

@@ -14,7 +14,7 @@ public:
     Dag_node* appendChild(const size_t);
     void setTriangle(const size_t triangle);
     size_t getIndex() const;
-    std::vector<Dag_node *> getChildren() const;
+    const std::vector<Dag_node *>& getChildren() const;
 
 protected:
     size_t triangle;

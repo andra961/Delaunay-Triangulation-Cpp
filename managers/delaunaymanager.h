@@ -40,7 +40,7 @@ private:
 
     //Declare your private attributes here
     /********************************************************************************************************************/
-    Dag_node dag;
+    Dag_node* dag;
     Drawable_delaunay_triangulation triangulation; 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 

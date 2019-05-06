@@ -45,6 +45,7 @@ const cg3::Pointd SCENECENTER(0,0,0);
 #include <data_structures/dag_node.h>
 #include <drawable_objects/drawable_delaunay_triangulation.h>
 #include <algorithms/delaunay_triangulation.h>
+#include <algorithms/triangle_utilities.h>
 //----------------------------------------------------------------------------------------------
 
 
@@ -59,7 +60,7 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     ui(new Ui::DelaunayManager),
     mainWindow(static_cast<cg3::viewer::MainWindow&>(*parent)),
     boundingBox(cg3::Point2Dd(-BOUNDINGBOX, -BOUNDINGBOX),
-                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),dag(0),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),&this->dag,SCENECENTER,SCENERADIUS)
+                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),dag(new Dag_node(0)),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),this->dag,SCENECENTER,SCENERADIUS)
 {
     //UI setup
     ui->setupUi(this);
@@ -82,9 +83,9 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     //You probably need to initialize your objects in the constructor. Write it here if you need, or add in the constructor
     //for member initialization.
     /********************************************************************************************************************/
-    //this->triangulation = Drawable_delaunay_triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),SCENECENTER,SCENERADIUS);
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    mainWindow.pushObj(&triangulation,"Triangulation");
+    mainWindow.updateGlCanvas();
     /********************************************************************************************************************/
 }
 
@@ -107,7 +108,7 @@ DelaunayManager::~DelaunayManager() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    deleteDag(this->dag);
     /********************************************************************************************************************/
 
     //When the manager is destroyed, the mainWindow should
@@ -124,9 +125,9 @@ DelaunayManager::~DelaunayManager() {
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/
-
     //Delete the bounding box drawable object
     mainWindow.deleteObj(&boundingBox);
+    mainWindow.deleteObj(&triangulation);
 
     delete ui; //Delete interface
 }
@@ -148,7 +149,13 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-    getTriangulation(triangulation,dag,inputPoints);
+
+    std::vector<cg3::Point2Dd> points1;
+
+    points1.push_back(cg3::Point2Dd(0,0));
+    //points1.push_back(cg3::Point2Dd(0,100009));
+
+    getTriangulation(triangulation,dag,points1);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }
@@ -175,7 +182,9 @@ void DelaunayManager::clearDelaunayTriangulation() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    deleteDag(dag);
+    dag = new Dag_node(0);
+    triangulation = Drawable_delaunay_triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),dag,SCENECENTER,SCENERADIUS);
     /********************************************************************************************************************/
 }
 
@@ -196,7 +205,7 @@ void DelaunayManager::drawDelaunayTriangulation() {
     //Draw your Delaunay Triangulation in the canvas here if you choose another
     //approach.
     /********************************************************************************************************************/
-    mainWindow.pushObj(&triangulation,"Triangulation");
+    //mainWindow.pushObj(&triangulation,"Triangulation");
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/
@@ -227,7 +236,7 @@ void DelaunayManager::eraseDrawnDelaunayTriangulation() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
+    //mainWindow.deleteObj(&triangulation);
     /********************************************************************************************************************/
 
     //Canvas update
