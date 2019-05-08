@@ -111,6 +111,8 @@ private slots:
     void on_checkTriangulationPushButton_clicked();
 
     void on_showBoundingTriangleCheckBox_stateChanged(int arg1);
+    void on_voronoiDiagramPushButton_clicked();
+    void on_clearVoronoiDiagramPushButton_clicked();
 };
 
 #endif // DELAUNAYMANAGER_H

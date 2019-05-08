@@ -60,7 +60,7 @@ DelaunayManager::DelaunayManager(QWidget *parent) :
     ui(new Ui::DelaunayManager),
     mainWindow(static_cast<cg3::viewer::MainWindow&>(*parent)),
     boundingBox(cg3::Point2Dd(-BOUNDINGBOX, -BOUNDINGBOX),
-                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),dag(new Dag_node(0)),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),this->dag,SCENECENTER,SCENERADIUS)
+                cg3::Point2Dd(BOUNDINGBOX, BOUNDINGBOX)),dag(new Dag_node(0)),triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),dag,SCENECENTER,SCENERADIUS)
 {
     //UI setup
     ui->setupUi(this);
@@ -108,7 +108,7 @@ DelaunayManager::~DelaunayManager() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-    deleteDag(this->dag);
+    deleteDag(dag);
     /********************************************************************************************************************/
 
     //When the manager is destroyed, the mainWindow should
@@ -207,9 +207,7 @@ void DelaunayManager::drawDelaunayTriangulation() {
     //Draw your Delaunay Triangulation in the canvas here if you choose another
     //approach.
     /********************************************************************************************************************/
-    //mainWindow.pushObj(&triangulation,"Triangulation");
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-
     /********************************************************************************************************************/
 
     //Canvas update
@@ -255,6 +253,12 @@ void DelaunayManager::setVisibilityBoundingTriangle(const bool visible)
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
+    if(visible){
+        triangulation.setTriangleActive(0);
+    }
+    else{
+        triangulation.setTriangleInactive(0);
+    }
 
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(visible);
@@ -328,11 +332,24 @@ void DelaunayManager::checkTriangulation() {
 //They are needed if you want to implement voronoi
 /********************************************************************************************************************/
 
+
+
+void DelaunayManager::on_voronoiDiagramPushButton_clicked()
+{
+
+}
+
+
+
+void DelaunayManager::on_clearVoronoiDiagramPushButton_clicked()
+{
+
+}
+
+
 /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
 /********************************************************************************************************************/
-
-
 
 
 //----------------------------------------------------------------------------------------------

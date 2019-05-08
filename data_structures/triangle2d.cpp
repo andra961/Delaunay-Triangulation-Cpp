@@ -3,23 +3,12 @@
 #include <algorithms/triangle_utilities.h>
 
 /**
- * @brief default constructor
- */
-
-Triangle2d::Triangle2d()
-{
-
-}
-
-/**
  * @brief constructor given the points
  * @param points array containing 3 points
  * @param clockWiseOrAntiClockWise if true the triangle must be in clockwise order else in anticlockwise order
  */
 
-Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points){
-
-        //sortTriangleAntiClockWise(points);
+Triangle2d::Triangle2d(const std::array<cg3::Point2Dd,3>& points){
 
     this->vertices=points;
 }
@@ -30,7 +19,6 @@ Triangle2d::Triangle2d(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,c
         points[0] = point1;
         points[1] = point2;
         points[2] = point3;
-        //sortTriangleAntiClockWise(points);
 
     this->vertices=points;
 }
@@ -53,20 +41,17 @@ const cg3::Point2Dd& Triangle2d::getPoint(const size_t index) const{
  * @param clockWiseOrAntiClockWise if true the triangle must be in clockwise order else in anticlockwise order
  */
 
-void Triangle2d::setPoints(std::array<cg3::Point2Dd,3>& points){
-
-        sortTriangleAntiClockWise(points);
+void Triangle2d::setPoints(const std::array<cg3::Point2Dd,3>& points){
 
     this->vertices = points;
 }
 
-void Triangle2d::setPoints(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd& point3){
+void Triangle2d::setPoints(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,const cg3::Point2Dd& point3){
 
     std::array<cg3::Point2Dd,3> points;
     points[0] = point1;
     points[1] = point2;
     points[2] = point3;
-        sortTriangleAntiClockWise(points);
 
     this->vertices = points;
 }

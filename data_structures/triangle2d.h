@@ -11,13 +11,12 @@
 class Triangle2d
 {
 public:
-    Triangle2d();
-    Triangle2d(std::array<cg3::Point2Dd,3>& points);
+    Triangle2d(const std::array<cg3::Point2Dd,3>& points);
     Triangle2d(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,const cg3::Point2Dd& point3);
     const std::array<cg3::Point2Dd,3>& getPoints() const;
     const cg3::Point2Dd& getPoint(const size_t index) const;
-    void setPoints(std::array<cg3::Point2Dd,3>& points);
-    void setPoints(cg3::Point2Dd& point1,cg3::Point2Dd& point2,cg3::Point2Dd& point3);
+    void setPoints(const std::array<cg3::Point2Dd,3>& points);
+    void setPoints(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,const cg3::Point2Dd& point3);
 
 protected:
     std::array<cg3::Point2Dd,3> vertices;

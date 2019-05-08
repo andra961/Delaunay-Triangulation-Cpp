@@ -13,8 +13,8 @@ class Triangulation
 {
 public:
     Triangulation(const Triangle2d& init_triangle,Dag_node* dag_node);
-    Triangulation_member getTriangle(const size_t index);
-    std::vector<Triangulation_member> getTriangles() const;
+    const Triangulation_member& getTriangle(const size_t index);
+    std::vector<Triangulation_member>& getTriangles();
     size_t size();
     void addTriangle(const Triangulation_member triangle);
     void setTriangleActive(const size_t index);

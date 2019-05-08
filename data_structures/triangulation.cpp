@@ -19,11 +19,11 @@ Triangulation::Triangulation(const Triangle2d& init_triangle,Dag_node* dag_node)
  * @param index the index
  */
 
-Triangulation_member Triangulation::getTriangle(const size_t index){
+const Triangulation_member& Triangulation::getTriangle(const size_t index){
     return this->triangles[index];
 }
 
-std::vector<Triangulation_member> Triangulation::getTriangles() const{
+std::vector<Triangulation_member>& Triangulation::getTriangles(){
     return this->triangles;
 }
 
@@ -38,6 +38,7 @@ void Triangulation::addTriangle(const Triangulation_member triangle){
 void Triangulation::setTriangleActive(const size_t index){
     this->triangles[index].setActive();
 }
+
 void Triangulation::setTriangleInactive(const size_t index){
     this->triangles[index].setInactive();
 }
