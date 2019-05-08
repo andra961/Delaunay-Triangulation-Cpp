@@ -11,10 +11,11 @@ class Dag_node
 public:
     Dag_node();
     Dag_node(const size_t triangle);
-    Dag_node* appendChild(const size_t);
+    void appendChild(Dag_node* dag_node);
     void setTriangle(const size_t triangle);
     size_t getIndex() const;
-    const std::vector<Dag_node *>& getChildren() const;
+    std::vector<Dag_node *>& getChildren();
+    void print() const;
 
 protected:
     size_t triangle;

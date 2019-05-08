@@ -153,7 +153,9 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
     //std::vector<cg3::Point2Dd> points1;
 
     //points1.push_back(cg3::Point2Dd(0,0));
-    //points1.push_back(cg3::Point2Dd(0,100009));
+    //points1.push_back(cg3::Point2Dd(500000,0));
+    //points1.push_back(cg3::Point2Dd(700000,300000));
+    //points1.push_back(cg3::Point2Dd(0,500000));
 
     getTriangulation(triangulation,dag,inputPoints);
     /********************************************************************************************************************/
@@ -279,7 +281,24 @@ void DelaunayManager::checkTriangulation() {
 	//by calling "triangles.resize(n, 3)", and then fill the matrix using the
     //assignment operator: "triangles(i,j) = a"; 
     /********************************************************************************************************************/
+    std::vector<Triangulation_member> activeTriangles;
+    for (size_t i = 0;i<triangulation.size();i++) {
+        Triangulation_member triangle = triangulation.getTriangle(i);
+        if(triangle.isActive()){
+            activeTriangles.push_back(triangle);
+        }
+    }
+    triangles.resize(activeTriangles.size(),3);
+    for (size_t i = 0;i<activeTriangles.size();i++) {
+        size_t currentIndex = points.size();
+        points.push_back(activeTriangles[i].getPoint(0));
+        triangles(i,0) = currentIndex;
+        points.push_back(activeTriangles[i].getPoint(1));
+        triangles(i,1) = currentIndex +1;
+        points.push_back(activeTriangles[i].getPoint(2));
+        triangles(i,2) = currentIndex +2;
 
+    }
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
     /********************************************************************************************************************/

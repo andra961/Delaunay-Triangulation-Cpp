@@ -19,7 +19,7 @@ Triangle2d::Triangle2d()
 
 Triangle2d::Triangle2d(std::array<cg3::Point2Dd,3>& points){
 
-        sortTriangleAntiClockWise(points);
+        //sortTriangleAntiClockWise(points);
 
     this->vertices=points;
 }
@@ -30,7 +30,7 @@ Triangle2d::Triangle2d(const cg3::Point2Dd& point1,const cg3::Point2Dd& point2,c
         points[0] = point1;
         points[1] = point2;
         points[2] = point3;
-        sortTriangleAntiClockWise(points);
+        //sortTriangleAntiClockWise(points);
 
     this->vertices=points;
 }

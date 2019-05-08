@@ -14,7 +14,7 @@ public:
     bool isActive() const;
     size_t getNeighbour(const size_t index) const;
     Dag_node* getDagNode() const;
-    void setNeighbour(size_t neighbour,const size_t new_index);
+    void setNeighbour(size_t neighbour, size_t new_index);
 
 protected:
     bool active;

@@ -34,6 +34,6 @@ Dag_node* Triangulation_member::getDagNode() const{
     return this->dag_node;
 }
 
-void Triangulation_member::setNeighbour(const size_t neighbour,const size_t new_index){
+void Triangulation_member::setNeighbour(size_t neighbour,size_t new_index){
     this->adjList[neighbour] = new_index;
 }

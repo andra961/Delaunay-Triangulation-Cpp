@@ -57,12 +57,27 @@ Dag_node* searchTriangle(Triangulation& triangulation,Dag_node* dag,const cg3::P
 }
 
 void deleteDag(Dag_node* dag){
+    std::set<Dag_node*> allNodes;
+    std::set<Dag_node*>::iterator it;
+    for (it = allNodes.begin(); it != allNodes.end(); ++it) {
+        delete *it;
+    }
+
+}
+
+void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes){
+
     if(dag != NULL){
-        for (size_t i = 0;i<dag->getChildren().size();i++) {
-            deleteDag(dag->getChildren()[i]);
+        /*for (std::vector<Dag_node*>::iterator it = myvector.begin() ; it != myvector.end(); ++it){
+
+        }*/
+        std::vector<Dag_node*> children = dag->getChildren();
+        allNodes.insert(dag);
+        for (size_t i = 0;i<children.size();i++) {
+            deleteDagRec(children[i],allNodes);
         }
-        delete dag;
-        dag = NULL;
+        //delete dag;
+        //dag = NULL;
     }
 }
 

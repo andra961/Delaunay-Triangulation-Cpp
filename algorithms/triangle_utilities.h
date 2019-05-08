@@ -20,5 +20,6 @@ Dag_node* searchTriangle(Triangulation& triangulation,Dag_node* dag,const cg3::P
 
 void deleteDag(Dag_node* dag);
 
+void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes);
 
 #endif // UTILITIES_H
