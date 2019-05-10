@@ -7,11 +7,14 @@
 #include <data_structures/dag_node.h>
 #include <data_structures/triangulation.h>
 
+namespace Dag {
 
-Dag_node* searchTriangle(Triangulation& triangulation,Dag_node* dag,const cg3::Point2Dd& point);
+    Dag_node* searchTriangle(Triangulation& triangulation,Dag_node* dag,const cg3::Point2Dd& point);
 
-void deleteDag(Dag_node* dag);
+    void deleteDag(Dag_node* dag);
 
-void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes);
+    void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes);
+}
+
 
 #endif // UTILITIES_H

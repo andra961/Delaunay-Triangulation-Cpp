@@ -45,7 +45,7 @@ const cg3::Pointd SCENECENTER(0,0,0);
 #include <data_structures/dag_node.h>
 #include <drawable_objects/drawable_delaunay_triangulation.h>
 #include <algorithms/delaunay_triangulation.h>
-#include <algorithms/triangle_utilities.h>
+#include <algorithms/dag_utilities.h>
 //----------------------------------------------------------------------------------------------
 
 
@@ -108,7 +108,7 @@ DelaunayManager::~DelaunayManager() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-    deleteDag(dag);
+    Dag::deleteDag(dag);
     /********************************************************************************************************************/
 
     //When the manager is destroyed, the mainWindow should
@@ -157,7 +157,7 @@ void DelaunayManager::computeDelaunayTriangulation(const std::vector<cg3::Point2
     //points1.push_back(cg3::Point2Dd(700000,300000));
     //points1.push_back(cg3::Point2Dd(0,500000));
 
-    getTriangulation(triangulation,dag,inputPoints);
+    Delaunay::getTriangulation(triangulation,dag,inputPoints);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(inputPoints);
 }
@@ -171,7 +171,8 @@ void DelaunayManager::addPointToDelaunayTriangulation(const cg3::Point2Dd& p) {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-    incrementalStep(triangulation,dag,p);
+    Delaunay::incrementalStep(triangulation,dag,p);
+    Delaunay::discardBoundingVertexes(triangulation);
     /********************************************************************************************************************/
     CG3_SUPPRESS_WARNING(p);
 }
@@ -184,7 +185,7 @@ void DelaunayManager::clearDelaunayTriangulation() {
     /********************************************************************************************************************/
 
     /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
-    deleteDag(dag);
+    Dag::deleteDag(dag);
     dag = new Dag_node(0);
     triangulation = Drawable_delaunay_triangulation(Triangle2d(BT_P1,BT_P2,BT_P3),dag,SCENECENTER,SCENERADIUS);
     /********************************************************************************************************************/
