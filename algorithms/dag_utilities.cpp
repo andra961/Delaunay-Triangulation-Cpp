@@ -3,7 +3,7 @@
 namespace Dag {
 
     /**
-     * @brief searches a active triangle containing a point
+     * @brief searches a triangle containing a point
      * @param triangulation the triangulation in which the research is computed
      * @param dag the node from which the search begins
      * @param point the point

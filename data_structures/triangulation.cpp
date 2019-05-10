@@ -1,7 +1,7 @@
 #include "triangulation.h"
 
 /**
- * @brief default constructor initialises the triangulation with a triangle representing the bounding space,so triangles with no adjacents triangles will point to that(0)
+ * @brief constructor initialises the triangulation with a triangle representing the bounding space,so triangles with no adjacents triangles will point to that(0)
  * @param init_triangle the bounding triangle,MUST be sorted in anti-clockwise order
  * @param dag_node the node of the dag which will point to the bounding triangle(the root of the dag)
  */
