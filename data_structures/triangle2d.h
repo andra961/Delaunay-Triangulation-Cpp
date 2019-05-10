@@ -5,7 +5,7 @@
 #include <cg3/geometry/2d/point2d.h>
 
 /**
- * @brief class that represents a triangle;contains an array of 3 points ordered in clockwise or anticlockwise order
+ * @brief class that represents a triangle;contains an array of 3 points
  */
 
 class Triangle2d

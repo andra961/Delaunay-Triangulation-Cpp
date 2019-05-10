@@ -7,6 +7,10 @@
 #include <cg3/viewer/renderable_objects/2d/renderable_objects2d.h>
 #include <algorithms/dag_utilities.h>
 
+/**
+ * @brief class used to draw a triangulation
+ */
+
 class Drawable_delaunay_triangulation  : public Triangulation, public cg3::DrawableObject
 {
 public:

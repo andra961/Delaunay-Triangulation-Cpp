@@ -6,7 +6,7 @@
 #include <cg3/core/cg3/geometry/2d/point2d.h>
 
 /**
- * @brief class that represents a triangulation;
+ * @brief class that represents a triangulation,contains a vector of triangulation members and the first triangle represents the bounding triangle
  */
 
 class Triangulation

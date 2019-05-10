@@ -4,6 +4,11 @@
 #include <data_structures/triangle2d.h>
 #include <data_structures/dag_node.h>
 
+/**
+ * @brief class that represents a triangulation member,extends Triangle2d and contains the adjlist of the triangle,
+ * a pointer to his corrispective node in the dag and a bool stating if it is active
+ */
+
 class Triangulation_member: public Triangle2d
 {
 public:
