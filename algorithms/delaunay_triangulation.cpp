@@ -32,7 +32,7 @@ void flipEdge(Triangulation& triangulation,const size_t triangle_index,const siz
         Triangulation_member adjTriangle = triangulation.getTriangle(triangle.getNeighbour((point_index+1)%3));
 
         size_t adj_point_index = ((findIndexInNeighbour(triangulation,triangle_index,triangle.getNeighbour((point_index+1)%3))+2)%3);
-        if (isPointLyingInCircle(triangle.getPoint(0),triangle.getPoint(1),triangle.getPoint(2),adjTriangle.getPoint(adj_point_index),false)) {
+        if (DelaunayTriangulation::Checker::isPointLyingInCircle(triangle.getPoint(0),triangle.getPoint(1),triangle.getPoint(2),adjTriangle.getPoint(adj_point_index),false)) {
 
             triangulation.setTriangleInactive(triangle_index);
             triangulation.setTriangleInactive(triangle.getNeighbour((point_index+1)%3));

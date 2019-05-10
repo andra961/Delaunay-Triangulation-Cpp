@@ -5,6 +5,7 @@
 #include <data_structures/triangulation.h>
 #include <cg3/utilities/color.h>
 #include <cg3/viewer/renderable_objects/2d/renderable_objects2d.h>
+#include <algorithms/triangle_utilities.h>
 
 class Drawable_delaunay_triangulation  : public Triangulation, public cg3::DrawableObject
 {

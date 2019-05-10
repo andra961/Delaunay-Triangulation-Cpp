@@ -3,7 +3,6 @@
 
 #include <data_structures/triangulation.h>
 #include <data_structures/dag_node.h>
-#include <cg3/core/cg3/geometry/2d/utils2d.h>
 #include <algorithms/triangle_utilities.h>
 #include <utils/delaunay_checker.h>
 

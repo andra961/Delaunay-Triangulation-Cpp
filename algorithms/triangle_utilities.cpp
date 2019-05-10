@@ -35,5 +35,3 @@ void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes){
         }
     }
 }
-
-

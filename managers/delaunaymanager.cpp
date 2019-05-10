@@ -332,20 +332,15 @@ void DelaunayManager::checkTriangulation() {
 //They are needed if you want to implement voronoi
 /********************************************************************************************************************/
 
-
-
 void DelaunayManager::on_voronoiDiagramPushButton_clicked()
 {
 
 }
 
-
-
 void DelaunayManager::on_clearVoronoiDiagramPushButton_clicked()
 {
 
 }
-
 
 /* WRITE YOUR CODE HERE! Read carefully the above comments! This line can be deleted */
 
