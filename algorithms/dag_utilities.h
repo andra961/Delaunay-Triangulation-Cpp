@@ -13,7 +13,7 @@ namespace Dag {
 
     void deleteDag(Dag_node* dag);
 
-    void deleteDagRec(Dag_node* dag,std::set<Dag_node*>& allNodes);
+    void addNodeToDeleteRec(Dag_node* dag,std::set<Dag_node*>& allNodes);
 }
 
 
